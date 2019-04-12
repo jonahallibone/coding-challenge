@@ -1,28 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import SearchPage from "./components/SearchPage/SearchPage";
+import BalanceSheetPage from './components/BalanceSheetPage/BalanceSheetPage';
+
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+const App = () => {
+  return (
+    <div className="App">
+      <div>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={SearchPage} />
+            <Route path="/symbol/:symbol" component={BalanceSheetPage} />
+          </Switch>
+        </Router>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;
